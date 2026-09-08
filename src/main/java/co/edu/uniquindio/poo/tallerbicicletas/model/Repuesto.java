@@ -26,6 +26,15 @@ public class Repuesto {
      * Evalúa si el stock actual se encuentra  por debajo del límite mínimo permitido.
      * @return {@code true} si el stock es menor al valor minimo, {@code false} en caso contrario.
      */
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
     public boolean stockInsuficiente(){
         return stockActual <= stockMinimo;
     }
