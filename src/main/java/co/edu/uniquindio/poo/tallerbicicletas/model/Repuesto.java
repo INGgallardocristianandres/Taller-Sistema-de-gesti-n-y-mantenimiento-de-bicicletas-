@@ -22,19 +22,22 @@ public class Repuesto {
         this.stockActual = stockActual;
         this.stockMinimo = stockMinimo;
     }
+
+    public String getCodigo() {return codigo;}
+    public void setCodigo(String codigo) {this.codigo = codigo;}
+    public String getNombre() {return nombre;}
+    public void setNombre(String nombre) {this.nombre = nombre;}
+    public double getPrecio() {return precio;}
+    public void setPrecio(double precio) {this.precio = precio;}
+    public int getStockActual() {return stockActual;}
+    public void setStockActual(int stockActual) {this.stockActual = stockActual;}
+    public int getStockMinimo() {return stockMinimo;}
+    public void setStockMinimo(int stockMinimo) {this.stockMinimo = stockMinimo;}
+
     /**
      * Evalúa si el stock actual se encuentra  por debajo del límite mínimo permitido.
      * @return {@code true} si el stock es menor al valor minimo, {@code false} en caso contrario.
      */
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
     public boolean stockInsuficiente(){
         return stockActual <= stockMinimo;
     }

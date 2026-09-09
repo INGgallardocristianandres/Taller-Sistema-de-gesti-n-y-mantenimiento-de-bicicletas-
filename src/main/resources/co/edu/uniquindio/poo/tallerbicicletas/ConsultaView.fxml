@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" spacing="15.0" prefHeight="600.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.tallerbicicletas.controller.ConsultaViewController">
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0" />
+    </padding>
+    <children>
+        <Label text="Consultas e Historial de Servicios" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+        <!-- Sección Historial por Serial -->
+        <VBox spacing="8.0" style="-fx-border-color: #cccccc; -fx-padding: 10;">
+            <Label text="Buscar Historial por Bicicleta (Serial):" style="-fx-font-weight: bold;" />
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <TextField fx:id="txtBuscarSerial" promptText="Ingrese el serial..." prefWidth="250.0" />
+                <Button text="Buscar Historial" onAction="#onBuscarPorSerial" />
+            </HBox>
+        </VBox>
+
+        <!-- Sección Órdenes por Fecha -->
+        <VBox spacing="8.0" style="-fx-border-color: #cccccc; -fx-padding: 10;">
+            <Label text="Buscar Órdenes por Fecha:" style="-fx-font-weight: bold;" />
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <DatePicker fx:id="dpFechaConsulta" prefWidth="250.0" />
+                <Button text="Filtrar por Fecha" onAction="#onBuscarPorFecha" />
+            </HBox>
+        </VBox>
+
+        <TableView fx:id="tblOrdenes" prefHeight="250.0" prefWidth="610.0">
+            <columns>
+                <TableColumn fx:id="colId" text="ID Órden" prefWidth="80.0" />
+                <TableColumn fx:id="colFecha" text="Fecha Ingreso" prefWidth="100.0" />
+                <TableColumn fx:id="colBicicleta" text="Bicicleta" prefWidth="130.0" />
+                <TableColumn fx:id="colMecanico" text="Mecánico" prefWidth="130.0" />
+                <TableColumn fx:id="colMotivo" text="Motivo" prefWidth="170.0" />
+            </columns>
+        </TableView>
+
+        <Button text="Volver" onAction="#onVolver" />
+    </children>
+</VBox>

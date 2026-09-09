@@ -1,32 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
+<VBox alignment="CENTER" spacing="15.0" prefHeight="550.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.tallerbicicletas.controller.MainViewController">
+    <padding>
+        <Insets top="30.0" right="40.0" bottom="30.0" left="40.0" />
+    </padding>
+    <children>
+        <Label text="Taller De Bicicletas" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
 
-<VBox alignment="CENTER" prefHeight="500.0" prefWidth="700.0" spacing="15.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.tallerbicicletas.controller.MainViewController">
-   <children>
-      <Label text="Taller De Bicicletas">
-         <font>
-            <Font name="System Bold" size="22.0" />
-         </font>
-      </Label>
-      <Button fx:id="btnModuloClientes" mnemonicParsing="false" onAction="#onAbrirClientes" prefHeight="35.0" prefWidth="220.0" text="Gestión de Clientes" textAlignment="JUSTIFY">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnModuloRepuestos" mnemonicParsing="false" onAction="#onAbrirRepuestos" prefHeight="35.0" prefWidth="220.0" text="Inventario de Repuestos" textAlignment="JUSTIFY">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnModuloMecanicos" mnemonicParsing="false" onAction="#onAbrirMecanicos" prefHeight="35.0" prefWidth="220.0" text="Gestión de Mecánicos" textAlignment="JUSTIFY">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-   </children>
+        <Button fx:id="btnModuloClientes" text="Gestión de Clientes" prefWidth="280.0" prefHeight="40.0" onAction="#onAbrirClientes" />
+        <Button fx:id="btnModuloBicicletas" text="Gestión de Bicicletas" prefWidth="280.0" prefHeight="40.0" onAction="#onAbrirBicicletas" />
+        <Button fx:id="btnModuloMecanicos" text="Gestión de Mecánicos" prefWidth="280.0" prefHeight="40.0" onAction="#onAbrirMecanicos" />
+        <Button fx:id="btnModuloRepuestos" text="Inventario de Repuestos" prefWidth="280.0" prefHeight="40.0" onAction="#onAbrirRepuestos" />
+        <Button fx:id="btnModuloOrdenes" text="Crear Orden de Servicio" prefWidth="280.0" prefHeight="40.0" onAction="#onAbrirOrdenServicio" />
+        <Button fx:id="btnModuloConsultas" text="Consultas e Historiales" prefWidth="280.0" prefHeight="40.0" onAction="#onAbrirConsultas" />
+        <Button fx:id="btnModuloAlertas" text="Alertas de Stock Bajo" prefWidth="280.0" prefHeight="40.0" onAction="#onAbrirAlertasStock" style="-fx-background-color: #ffcccc; -fx-font-weight: bold;" />
+    </children>
 </VBox>

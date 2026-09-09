@@ -59,6 +59,89 @@ public class TallerBicicletas {
         }
     }
 
+    /**
+     * Registra un nuevo repuesto en el inventario del taller.
+     *
+     * @param repuesto Repuesto a registrar.
+     */
+    public void agregarRepuesto(Repuesto repuesto) {
+        if (repuesto != null) {
+            repuestos.add(repuesto);
+        }
+    }
+
+    /**
+     * Crea y registra una nueva orden de servicio en el taller.
+     *
+     * @param orden Orden de servicio a registrar.
+     */
+    public void crearOrden(OrdenServicio orden) {
+        if (orden != null) {
+            ordenes.add(orden);
+        }
+    }
+
+    /**
+     * Busca una persona (Cliente o Mecánico) por su número de identificación.
+     *
+     * @param id Identificación de la persona a buscar.
+     * @return {@link Persona} encontrada o {@code null} si no existe.
+     */
+    public Persona buscarPersonaPorId(String id) {
+        if (id == null || id.isBlank()) {
+            return null;
+        }
+        for (Persona persona : personas) {
+            if (persona.getId().equalsIgnoreCase(id)) {
+                return persona;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Obtiene el historial de órdenes asociadas al serial de una bicicleta.
+     */
+    public List<OrdenServicio> buscarHistorialPorSerial(String serial) {
+        List<OrdenServicio> resultado = new ArrayList<>();
+        if (serial == null || serial.isBlank()) return resultado;
+
+        for (OrdenServicio orden : ordenes) {
+            if (orden.getBicicleta() != null && orden.getBicicleta().getSerial().equalsIgnoreCase(serial)) {
+                resultado.add(orden);
+            }
+        }
+        return resultado;
+    }
+
+    /**
+     * Obtiene las órdenes registradas en una fecha específica.
+     */
+    public List<OrdenServicio> buscarOrdenesPorFecha(java.time.LocalDate fecha) {
+        List<OrdenServicio> resultado = new ArrayList<>();
+        if (fecha == null) return resultado;
+
+        for (OrdenServicio orden : ordenes) {
+            if (orden.getFechaIngreso() != null && orden.getFechaIngreso().equals(fecha)) {
+                resultado.add(orden);
+            }
+        }
+        return resultado;
+    }
+
+    /**
+     * Funcionalidad propia: Filtra los repuestos con alerta de stock insuficiente.
+     */
+    public List<Repuesto> obtenerRepuestosConStockBajo() {
+        List<Repuesto> resultado = new ArrayList<>();
+        for (Repuesto repuesto : repuestos) {
+            if (repuesto.stockInsuficiente()) {
+                resultado.add(repuesto);
+            }
+        }
+        return resultado;
+    }
+
     public List<Persona> getPersonas() {
         return personas;
     }

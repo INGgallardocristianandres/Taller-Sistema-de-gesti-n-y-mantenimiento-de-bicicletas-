@@ -25,7 +25,7 @@ import java.time.LocalDate;
  *   eventos y datos de la interfaz de órdenes de servicio.</li>
  * </ul>
  */
-public class OrdenServicioController {
+public class OrdenServicioViewController {
 
     @FXML
     private TextField txtId;

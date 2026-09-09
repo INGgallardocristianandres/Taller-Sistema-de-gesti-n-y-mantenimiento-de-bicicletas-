@@ -38,16 +38,6 @@ public class OrdenServicio {
     private List<Repuesto> repuestosUtilizados;
     private double costoManoObra;
 
-    /**
-     * Constructor de la orden de servicio.
-     *
-     * @param id Identificador de la orden.
-     * @param fechaIngreso Fecha de ingreso de la bicicleta.
-     * @param bicicleta Bicicleta a la que se le realizará el servicio.
-     * @param mecanico Mecánico responsable del servicio.
-     * @param motivo Motivo por el cual se solicita el servicio.
-     * @param costoManoObra Costo correspondiente a la mano de obra.
-     */
     public OrdenServicio(String id, LocalDate fechaIngreso,
                          Bicicleta bicicleta, Mecanico mecanico,
                          String motivo, double costoManoObra) {

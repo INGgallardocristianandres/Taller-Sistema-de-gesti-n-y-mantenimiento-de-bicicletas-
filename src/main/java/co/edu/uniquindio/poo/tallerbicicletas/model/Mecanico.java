@@ -13,16 +13,23 @@ package co.edu.uniquindio.poo.tallerbicicletas.model;
  */
 public class Mecanico extends Persona{
     private Especialidad especialidad;
-    private String numeroCerficado;
+    private String numeroCertificado;
 
     public Mecanico(String id, String nombre, Especialidad especialidad, String numeroCerficado) {
         super(id, nombre);
         this.especialidad = especialidad;
-        this.numeroCerficado = numeroCerficado;
+        this.numeroCertificado = numeroCerficado;
     }
 
     public Especialidad getEspecialidad() {return especialidad;}
     public void setEspecialidad(Especialidad especialidad) {this.especialidad = especialidad;}
-    public String getNumeroCerficado() {return numeroCerficado;}
-    public void setNumeroCerficado(String numeroCerficado) {this.numeroCerficado = numeroCerficado;}
+    public String getNumeroCerficado() {return numeroCertificado;}
+    public void setNumeroCerficado(String numeroCerficado) {this.numeroCertificado = numeroCerficado;}
+
+    @Override
+    public String toString() {
+        return "Mecanico{" +
+                "especialidad=" + especialidad +
+                '}';
+    }
 }

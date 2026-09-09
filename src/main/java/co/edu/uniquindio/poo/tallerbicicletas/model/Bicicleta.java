@@ -97,4 +97,8 @@ public class Bicicleta {
     public void setPropietario(Cliente propietario) {
         this.propietario = propietario;
     }
+    @Override
+    public String toString() {
+        return marca + " - " + serial + " (" + (propietario != null ? propietario.getNombre() : "Sin propietario") + ")";
+    }
 }

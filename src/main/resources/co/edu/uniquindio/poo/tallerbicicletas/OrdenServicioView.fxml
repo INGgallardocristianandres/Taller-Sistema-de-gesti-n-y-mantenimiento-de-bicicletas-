@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_CENTER" spacing="12.0" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.tallerbicicletas.controller.OrdenServicioViewController">
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0" />
+    </padding>
+    <children>
+        <Label text="Registro de Orden de Servicio" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+        <HBox alignment="CENTER_LEFT" spacing="15.0">
+            <children>
+                <Label text="ID Orden:" prefWidth="150.0" />
+                <TextField fx:id="txtId" prefWidth="250.0" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="15.0">
+            <children>
+                <Label text="Fecha Ingreso:" prefWidth="150.0" />
+                <DatePicker fx:id="dpFechaIngreso" prefWidth="250.0" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="15.0">
+            <children>
+                <Label text="Bicicleta:" prefWidth="150.0" />
+                <ComboBox fx:id="cbBicicleta" prefWidth="250.0" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="15.0">
+            <children>
+                <Label text="Mecánico:" prefWidth="150.0" />
+                <ComboBox fx:id="cbMecanico" prefWidth="250.0" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="15.0">
+            <children>
+                <Label text="Motivo:" prefWidth="150.0" />
+                <TextArea fx:id="txtMotivo" prefWidth="250.0" prefHeight="80.0" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="15.0">
+            <children>
+                <Label text="Costo Mano Obra ($):" prefWidth="150.0" />
+                <TextField fx:id="txtCostoManoObra" prefWidth="250.0" />
+            </children>
+        </HBox>
+
+        <HBox alignment="CENTER" spacing="15.0">
+            <children>
+                <Button text="Registrar Orden" onAction="#registrarOrden" />
+            </children>
+        </HBox>
+    </children>
+</VBox>

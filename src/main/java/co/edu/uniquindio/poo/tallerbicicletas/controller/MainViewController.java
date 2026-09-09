@@ -1,5 +1,8 @@
 package co.edu.uniquindio.poo.tallerbicicletas.controller;
 
+import co.edu.uniquindio.poo.tallerbicicletas.model.TallerBicicletas;
+import co.edu.uniquindio.poo.tallerbicicletas.controller.OrdenServicioViewController;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,68 +11,102 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-/**
- * Controlador para la pantalla principal del taller de bicicletas.
- *
- * @author Cristian
- */
+import java.io.IOException;
+import java.net.URL;
+
 public class MainViewController {
 
-    @FXML
-    private Button btnModuloClientes;
+    @FXML private Button btnModuloClientes;
+    @FXML private Button btnModuloBicicletas;
+    @FXML private Button btnModuloMecanicos;
+    @FXML private Button btnModuloRepuestos;
+    @FXML private Button btnModuloOrdenes;
+    @FXML private Button btnModuloConsultas;
+    @FXML private Button btnModuloAlertas;
 
-    @FXML
-    private Button btnModuloMecanicos;
+    // Se corrige el constructor: TallerBicicletas() no recibe parámetros
+    private TallerBicicletas taller = new TallerBicicletas();
 
-    @FXML
-    private Button btnModuloRepuestos;
+    public void setTaller(TallerBicicletas taller) {
+        if (taller != null) {
+            this.taller = taller;
+        }
+    }
 
     @FXML
     void onAbrirClientes(ActionEvent event) {
-        try {
+        abrirVentana("/co/edu/uniquindio/poo/tallerbicicletas/ClienteView.fxml", "Gestión de Clientes");
+    }
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/tallerbicicletas/ClienteView.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle("Gestión de Clientes");
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println("Error al cargar la vista ClienteView.fxml: " + e.getMessage());
-        }
+    @FXML
+    void onAbrirBicicletas(ActionEvent event) {
+        abrirVentana("/co/edu/uniquindio/poo/tallerbicicletas/BicicletaView.fxml", "Gestión de Bicicletas");
     }
 
     @FXML
     void onAbrirMecanicos(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/tallerbicicletas/MecanicoView.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle("Gestión de Mecánicos");
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println("Error al cargar la vista MecanicoView.fxml: " + e.getMessage());
-        }
+        abrirVentana("/co/edu/uniquindio/poo/tallerbicicletas/MecanicoView.fxml", "Gestión de Mecánicos");
     }
 
     @FXML
     void onAbrirRepuestos(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/tallerbicicletas/RepuestoView.fxml"));
-            Parent root = loader.load();
+        abrirVentana("/co/edu/uniquindio/poo/tallerbicicletas/RepuestoView.fxml", "Gestión de Repuestos");
+    }
 
+    @FXML
+    void onAbrirOrdenServicio(ActionEvent event) {
+        abrirVentanaConTaller("/co/edu/uniquindio/poo/tallerbicicletas/OrdenServicioView.fxml", "Crear Orden de Servicio");
+    }
+
+    @FXML
+    void onAbrirConsultas(ActionEvent event) {
+        abrirVentanaConTaller("/co/edu/uniquindio/poo/tallerbicicletas/ConsultaView.fxml", "Consultas e Historial");
+    }
+
+    @FXML
+    void onAbrirAlertasStock(ActionEvent event) {
+        abrirVentanaConTaller("/co/edu/uniquindio/poo/tallerbicicletas/AlertasStock.fxml", "Alertas de Inventario");
+    }
+
+    private void abrirVentana(String fxmlPath, String titulo) {
+        try {
+            URL location = getClass().getResource(fxmlPath);
+            if (location == null) {
+                System.err.println("No se encontró el archivo FXML: " + fxmlPath);
+                return;
+            }
+            FXMLLoader loader = new FXMLLoader(location);
+            Parent root = loader.load();
             Stage stage = new Stage();
-            stage.setTitle("Gestión de Repuestos");
+            stage.setTitle(titulo);
             stage.setScene(new Scene(root));
             stage.show();
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Error al cargar la vista RepuestoView.fxml: " + e.getMessage());
+        }
+    }
+
+    private void abrirVentanaConTaller(String fxmlPath, String titulo) {
+        try {
+            URL location = getClass().getResource(fxmlPath);
+            if (location == null) {
+                System.err.println("No se encontró el archivo FXML: " + fxmlPath);
+                return;
+            }
+            FXMLLoader loader = new FXMLLoader(location);
+            Parent root = loader.load();
+
+            Object controller = loader.getController();
+            if (controller instanceof OrdenServicioViewController) {
+                ((OrdenServicioViewController) controller).setTaller(taller);
+            }
+
+            Stage stage = new Stage();
+            stage.setTitle(titulo);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
